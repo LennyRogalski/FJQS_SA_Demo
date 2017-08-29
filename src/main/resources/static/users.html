@@ -1,0 +1,17 @@
+<div class="row #eeeeee grey lighten-3 z-depth-1" style="margin-top:10%" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="container " style="width:100%; height:600px;">
+        <table cellpadding="2" cellspacing="2" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Usr</th>
+                <th>Password</th>
+            </tr>
+            <tr ng-repeat="user in users track by $index">
+                <td>{{user.id_user}}</td>
+                <td>{{user.usr}}</td>
+                <td>{{user.password}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
