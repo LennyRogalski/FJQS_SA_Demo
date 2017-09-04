@@ -18,13 +18,33 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	<profiles>
+
+		<profile>
+			<id>ms-sql</id>
+			<!--<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment.type</name>
+					<value>dev</value>
+				</property>
+			</activation>-->
+			<properties>
+				<sql.Name>com.microsoft.sqlserver.jdbc.SQLServerDriver</sql.Name>
+				<sql.url>jdbc:sqlserver://G02PLXN00092\MSSQLSERVER1:1433;DatabaseName=statics</sql.url>
+				<sql.user>test</sql.user>
+				<sql.password>Password1</sql.password>
+			</properties>
+		</profile>
 
 
+	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +67,24 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>6.1.0.jre8</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -66,6 +104,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 
